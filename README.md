@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Doggy Woggy — Premium Pet Care Website (Client Demo)
 
-## Getting Started
+A design demo for **Doggy Woggy**, an all-in-one pet care business in Bhandup West, Mumbai: veterinary clinic, grooming & spa, and pet store.
 
-First, run the development server:
+> ⚠️ **Demo only.** Not deployed or published. No live booking backend, payments or analytics are connected.
+
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build && npm start   # production check
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Stack
+Next.js 15 (App Router) · TypeScript · Tailwind CSS v4 · Motion for React (`motion/react`) · Lucide icons · Fraunces + Plus Jakarta Sans (via `next/font`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Pages
+- `/` — Home: hero, intro, services, vet feature, grooming experience, pickup & drop, store, why us, gallery, testimonials (demo), contact, final CTA
+- `/veterinary`, `/grooming`, `/store` — dedicated service pages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Before going live — fill in `src/lib/site.ts`
+Everything unverified is `null` and renders as a clearly marked placeholder:
 
-## Learn More
+| Field | Effect when set |
+|---|---|
+| `phone` | Shows click-to-call number in contact cards & footer |
+| `whatsapp` | Booking form opens WhatsApp with a pre-filled enquiry; floating button becomes "WhatsApp us" |
+| `instagram` | Activates the footer Instagram link |
+| `hours` | Shows opening hours on location cards |
+| `locations[].mapEmbedUrl` | Replaces the illustrated map with a real Google Maps embed |
 
-To learn more about Next.js, take a look at the following resources:
+Also:
+- **Testimonials** (`src/components/home/testimonials.tsx`) are labelled *sample reviews*. Replace them with genuine customer reviews.
+- **Photography** in `public/images` is illustrative stock (Unsplash) and is labelled as such on the site. Swap in real Doggy Woggy photos when available.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design system
+| Token | Hex | Use |
+|---|---|---|
+| Deep Teal | `#123F3A` | Navigation, headings, key sections, footer |
+| Warm Cream | `#FFF8ED` | Primary background |
+| Sage | `#D8E8D6` | Wellness & grooming surfaces |
+| Coral | `#F28B62` | Booking / appointment CTAs |
+| Golden Yellow | `#F5C66A` | Small decorative accents |
+| Dark Text | `#242D29` | Body copy |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Animations respect `prefers-reduced-motion` (global `MotionConfig reducedMotion="user"` plus per-component checks).
